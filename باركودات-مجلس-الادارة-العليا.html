@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>باركودات مجلس الإدارة العليا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold-light:#e8d9a0;
+    --ink:#c9c6de;
+    --card-bg:#0c0a16;
+    --card-border:rgba(232,217,160,0.28);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html, body{ min-height:100%; }
+  body{
+    background:#000;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 15% 10%, rgba(60,38,95,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 35% at 85% 20%, rgba(14,44,85,0.30) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 70% 85%, rgba(95,30,70,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 30% at 25% 75%, rgba(20,60,100,0.22) 0%, transparent 65%);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    padding:48px 20px 80px;
+  }
+  h1{
+    font-family:'Amiri', serif;
+    color:var(--gold-light);
+    text-align:center;
+    font-size:30px;
+    margin-bottom:8px;
+  }
+  .subtitle{
+    text-align:center;
+    color:var(--ink);
+    opacity:0.75;
+    font-size:14px;
+    margin-bottom:28px;
+  }
+
+  /* ---- base-url configuration notice ---- */
+  #baseUrlWarning{
+    max-width:720px;
+    margin:0 auto 36px;
+    background:rgba(224,90,90,0.12);
+    border:1px solid rgba(224,90,90,0.45);
+    color:#f3c9c9;
+    border-radius:12px;
+    padding:14px 18px;
+    font-size:13.5px;
+    line-height:1.9;
+    text-align:center;
+  }
+  #baseUrlWarning code{
+    display:inline-block;
+    background:rgba(0,0,0,0.4);
+    padding:2px 8px;
+    border-radius:6px;
+    direction:ltr;
+    font-size:12.5px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:26px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    padding:26px 20px 22px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  }
+  .card .eyebrow{
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--gold-light);
+    opacity:0.85;
+    margin-bottom:6px;
+  }
+  .card .name{
+    font-family:'Amiri', serif;
+    font-size:23px;
+    color:#f5f0e2;
+    margin-bottom:2px;
+  }
+  .card .role{
+    font-size:13px;
+    color:var(--ink);
+    opacity:0.75;
+    margin-bottom:18px;
+  }
+  .card .qr-wrap{
+    background:#fff;
+    border-radius:12px;
+    padding:10px;
+    line-height:0;
+    margin-bottom:14px;
+  }
+  .card .qr-wrap img{
+    display:block;
+    width:220px;
+    height:220px;
+  }
+  .card .code-tag{
+    font-size:12px;
+    color:var(--gold-light);
+    opacity:0.8;
+    letter-spacing:1px;
+  }
+
+  @media print{
+    body{ background:#fff; color:#111; padding:0; }
+    h1, .subtitle, #baseUrlWarning{ display:none; }
+    .grid{ display:block; }
+    .card{
+      background:#fff; color:#111; border:1px solid #ccc;
+      box-shadow:none; page-break-inside:avoid; margin:0 auto 24px; max-width:340px;
+    }
+    .card .name{ color:#111; }
+    .card .role{ color:#444; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>باركودات مجلس الإدارة العليا</h1>
+  <div class="subtitle">دفعة إضافية منفصلة عن باركودات نادي عزم الحالية — الأكواد من 16 إلى 20</div>
+
+  <div id="baseUrlWarning"></div>
+
+  <div class="grid" id="grid"></div>
+
+<script>
+  /*
+    ضع هنا رابط صفحة "index.html" بعد نشر الموقع أونلاين، مثال:
+    'https://azm-club.example.com/index.html'
+    كل باركود سيفتح: BASE_URL + '?code=RECIPIENT_CODE'
+  */
+  const BASE_URL = 'REPLACE_WITH_PUBLISHED_URL/index.html';
+
+  const RECIPIENTS = [
+    { code: '16', name: 'محمد المهوس',      role: 'رئيس مجلس الإدارة العليا' },
+    { code: '17', name: 'عبدالملك الهويمل', role: 'عضو مجلس الإدارة العليا' },
+    { code: '18', name: 'ريناد العتيبي',    role: 'عضو مجلس الإدارة العليا' },
+    { code: '19', name: 'أحمد القديمي',     role: 'عضو مجلس الإدارة العليا' },
+    { code: '20', name: 'شوق الشمري',       role: 'عضو مجلس الإدارة العليا' }
+  ];
+
+  const isPlaceholder = BASE_URL.indexOf('REPLACE_WITH_PUBLISHED_URL') !== -1;
+  const warnEl = document.getElementById('baseUrlWarning');
+  if (isPlaceholder){
+    warnEl.innerHTML =
+      'الموقع غير منشور أونلاين بعد، لذا الباركودات أدناه تشير مؤقتًا إلى رابط وهمي. ' +
+      'افتح هذا الملف وعدّل قيمة <code>BASE_URL</code> في أعلى الكود إلى رابط الموقع الفعلي بعد نشره، ثم أعد فتح الصفحة قبل الطباعة أو التوزيع.';
+  } else {
+    warnEl.style.display = 'none';
+  }
+
+  const grid = document.getElementById('grid');
+  RECIPIENTS.forEach(r => {
+    const targetUrl = BASE_URL + '?code=' + encodeURIComponent(r.code);
+    const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=8&data=' + encodeURIComponent(targetUrl);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML =
+      '<div class="eyebrow">بطاقة شكر خاصة</div>' +
+      '<div class="name">' + r.name + '</div>' +
+      '<div class="role">' + r.role + '</div>' +
+      '<div class="qr-wrap"><img src="' + qrSrc + '" alt="باركود ' + r.name + '" width="220" height="220"></div>' +
+      '<div class="code-tag">كود البطاقة: ' + r.code + '</div>';
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
