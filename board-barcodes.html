@@ -119,9 +119,25 @@
     letter-spacing:1px;
   }
 
+  .pdf-btn{
+    display:block;
+    margin:0 auto 32px;
+    padding:12px 28px;
+    background:var(--gold-light);
+    color:#161020;
+    border:none;
+    border-radius:999px;
+    font-family:'Tajawal', sans-serif;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(232,217,160,0.25);
+  }
+  .pdf-btn:hover{ filter:brightness(1.08); }
+
   @media print{
     body{ background:#fff; color:#111; padding:0; }
-    h1, .subtitle, #baseUrlWarning{ display:none; }
+    h1, .subtitle, #baseUrlWarning, .pdf-btn{ display:none; }
     .grid{ display:block; }
     .card{
       background:#fff; color:#111; border:1px solid #ccc;
@@ -138,6 +154,8 @@
   <div class="subtitle">دفعة إضافية منفصلة عن باركودات نادي عزم الحالية — الأكواد من 16 إلى 20</div>
 
   <div id="baseUrlWarning"></div>
+
+  <button class="pdf-btn" id="pdfBtn" onclick="window.print()">حفظ الصفحة PDF / طباعة 📄</button>
 
   <div class="grid" id="grid"></div>
 
